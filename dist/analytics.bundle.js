@@ -1,0 +1,1 @@
+window.analytics=function(){let e=0;const t=()=>e++;return document.addEventListener("click",t),isDestroy=!0,{destroyed(){document.removeEventListener("click",t)},getClicks:()=>e}}();
