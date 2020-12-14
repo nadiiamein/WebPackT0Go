@@ -1,1 +1,1 @@
-(()=>{const o=new Post("Webpack Post Title");console.log("Post to sssstring:",o.toString)})();
+(()=>{"use strict";const t=new class{constructor(t){this.title=t,this.data=new Date}toString(){return JSON.stringify({title:this.title,date:this.date.toJSON()})}}("Webpack Post Title");console.log("Post to sssstring:",t.toString)})();
