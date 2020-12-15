@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/nadiiamein/WebPackT0Go#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^4.5.0",
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0"
