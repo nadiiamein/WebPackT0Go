@@ -3,6 +3,14 @@
     max-width: 1000px;
     margin: 0 auto;
 }
-.h1{
+h1{
     text-align: center;
+    color: red;
+}
+.logo{
+    background-image: url("../assets/mavic.png");
+    background-size: cover;
+    height: 300px;
+    width: 200px;
+    margin: 0 auto;
 }

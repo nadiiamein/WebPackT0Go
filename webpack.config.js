@@ -20,7 +20,7 @@ devServer:{
 plugins: [
     new HtmlWebpackPlugin({
         title: 'webpack Boilerplate',
-        template: path.resolve(__dirname, './src/template.html'), // шаблон
+        template: path.resolve(__dirname, './src/index.html'), // шаблон
         filename: 'index.html', // название выходного файла
     }),
     new CleanWebpackPlugin(),
@@ -34,7 +34,11 @@ module: {
         },
         {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: ['style-loader', 'css-loader'],
+        },
+        {
+            test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+            type: 'asset/resource',
         },
     ], 
 }
