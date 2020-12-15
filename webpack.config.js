@@ -40,6 +40,11 @@ module: {
             test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
             type: 'asset/resource',
         },
+        {
+            test: /\.(woff(2)?|eot|ttf|oft|svg)$/,
+            type: 'asset/inline',
+
+        },
     ], 
 }
 }
