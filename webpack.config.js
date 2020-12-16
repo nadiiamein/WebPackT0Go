@@ -45,6 +45,10 @@ module: {
             type: 'asset/inline',
 
         },
+        {
+            test: /\.xml$/i,
+            use: ['xml-loader'],
+          },
     ], 
 }
 }

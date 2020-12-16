@@ -12,6 +12,6 @@ export default class Post {
         });
     }
     get uppercaseTitle() {
-        return this.title.toUppercase()
+        return this.title.toUppercase();
     }
 }
