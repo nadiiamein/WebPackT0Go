@@ -1,1 +1,0 @@
-(()=>{var e,n;window.analytics=(e=0,n=function(){return e++},document.addEventListener("click",n),{destroy:function(){document.removeEventListener("click",n),destryed=!0},getClicks:function(){return e}})})();

@@ -14,12 +14,23 @@ output: {
     filename: '[name].[contenthash].js'
 },
 devServer:{
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, './dist'),
+    open: true,
+compress: true,
+hot: true,
     overlay: true,
-    open: true
+    port: 4200,
 },
 resolve: {
     extensions: ['.js', '.json', '.png'],
   
+},
+optimization: {
+    splitChunks: {
+        chunks: 'all',
+
+    },
 },
 plugins: [
     new HtmlWebpackPlugin({
