@@ -17,6 +17,10 @@ devServer:{
     overlay: true,
     open: true
 },
+resolve: {
+    extensions: ['.js', '.json', '.png'],
+  
+},
 plugins: [
     new HtmlWebpackPlugin({
         title: 'webpack Boilerplate',
