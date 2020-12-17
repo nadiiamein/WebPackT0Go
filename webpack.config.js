@@ -2,7 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { PassThrough } = require('stream');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
 entry:
@@ -41,12 +43,16 @@ plugins: [
         filename: 'index.html', // название выходного файла
     }),
     new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
         {
-        from: path.resolve(__dirname, 'src/file_type_favicon_icon_130608.ic0'),
+        from: path.resolve(__dirname, 'src/file_type_favicon_icon_130608.ico'),
         to: path.resolve(__dirname, 'dist')
         }
-    ])
+    ]),
+    new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css '
+    }),
 ],
 module: {
     rules: [
@@ -57,7 +63,14 @@ module: {
         },
         {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
+            use:[
+                { loader: MiniCssExtractPlugin.loader,
+                options: {
+                    hmr: isDev,
+                    reloadAll: true
+                } },
+                'css-loader'
+            ],
         },
         {
             test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
