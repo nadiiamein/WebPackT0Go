@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { PassThrough } = require('stream');
 
 module.exports = {
 entry:
@@ -39,6 +41,12 @@ plugins: [
         filename: 'index.html', // название выходного файла
     }),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+        {
+        from: path.resolve(__dirname, 'src/file_type_favicon_icon_130608.ic0'),
+        to: path.resolve(__dirname, 'dist')
+        }
+    ])
 ],
 module: {
     rules: [
