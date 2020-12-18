@@ -4,8 +4,21 @@ const {CleanWebpackPlugin} =require('clean-webpack-plugin');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const isDev = process.env.NODE_ENV === 'development';
+const OptimizeCssAssetWebpackPlugin = require ('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin =require('terser-webpack-plugin');
 
+const optimization = () => {
+
+return 
+    {
+        splitChunks: {
+            chunks: 'all';
+    
+        }
+    };
+
+
+};
 module.exports = {
 entry:
 {
@@ -30,17 +43,16 @@ resolve: {
     extensions: ['.js', '.json', '.png'],
   
 },
-optimization: {
-    splitChunks: {
-        chunks: 'all',
-
-    },
-},
+optimization: optimization(),
 plugins: [
     new HtmlWebpackPlugin({
         title: 'webpack Boilerplate',
         template: path.resolve(__dirname, './src/index.html'), // шаблон
-        filename: 'index.html', // название выходного файла
+        filename: 'index.html',
+        minify:{
+        collapseWhitespace: true,
+
+        } 
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
