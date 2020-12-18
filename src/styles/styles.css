@@ -22,6 +22,6 @@ h1{
     margin: 0 auto;
 }
 .code{
-    background-color: #5f9c05;
+    background-color: hsl(84, 94%, 32%);
     height: 50px;
 }

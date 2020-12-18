@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -44,12 +44,12 @@ plugins: [
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([
-        {
-        from: path.resolve(__dirname, 'src/file_type_favicon_icon_130608.ico'),
-        to: path.resolve(__dirname, 'dist')
-        }
-    ]),
+new CopyPlugin({
+    patterns: [
+        { from: path.resolve(__dirname, 'src/file_type_favicon_icon_130608.ico'),to: path.resolve( __dirname, 'dist' )
+    },
+    ]
+}),
     new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css '
     }),
@@ -66,9 +66,9 @@ module: {
             use:[
                 { loader: MiniCssExtractPlugin.loader,
                 options: {
-                    hmr: isDev,
-                    reloadAll: true
-                } },
+                    publicPath: path.resolve(__dirname, 'dist') 
+                },
+             },
                 'css-loader'
             ],
         },
